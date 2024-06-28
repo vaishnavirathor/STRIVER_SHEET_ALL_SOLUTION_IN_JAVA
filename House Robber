@@ -1,0 +1,20 @@
+*****House Robber*******
+class Solution {
+    public int rob(int[] nums) {
+     int dp[]=new int [nums.length];
+     int prev=nums[0],prev1=0;
+     
+     for(int i=1;i<nums.length;i++)
+     {
+        int pick=nums[i];
+        if(i>1)pick+=prev1;
+        int not_pick=prev;
+
+        int temp=Math.max(pick,not_pick);
+        prev1=prev;
+        prev=temp;
+
+     }   
+return prev;
+    }
+}
