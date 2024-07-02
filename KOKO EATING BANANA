@@ -1,0 +1,30 @@
+****KOKO EATING BANANA******
+class Solution {
+    public int minEatingSpeed(int[] p, int h) {
+        int e = Integer.MIN_VALUE, s = 1;
+        
+        for (int i = 0; i < p.length; i++) {
+            e = Math.max(e, p[i]);
+        }
+        
+        int min = e;
+        
+        while (s <= e) {
+            int mid = s + (e - s) / 2;
+            int hr = 0;
+            
+            for (int i = 0; i < p.length; i++) {
+                hr += Math.ceil((double)p[i] / mid);
+            }
+            
+            if (hr <= h) {
+                min = Math.min(min, mid);
+                e = mid - 1;
+            } else {
+                s = mid + 1;
+            }
+        }
+        
+        return min;
+    }
+}
